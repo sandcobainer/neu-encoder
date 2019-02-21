@@ -44,17 +44,18 @@ def synthesizer():
         structure = os.path.join(outputpath,newdir)
         if not os.path.isdir(structure):
             os.mkdir(structure)
+            for fname in filenames:
+                if fnmatch.fnmatch(fname, '*.wav'):
+                    print('Encoding ' + fname);
+                    audio, encoding = load_encoding(os.path.join(dirpath + fname))
+                    np.save(structure + fname + '.npy', encoding)
+                    print('Syntheszing ' + fname + ' ' + structure);
+                    fastgen.synthesize(encoding,save_paths=[structure + fname],checkpoint_path=ckpt,samples_per_save=sl)
+                    print('Done : ' +  fname);
         else:
             print("Folder does already exists!")
             return
-        for fname in filenames:
-            if fnmatch.fnmatch(fname, '*.wav'):
-                print('Encoding ' + fname);
-                audio, encoding = load_encoding(dirpath + fname)
-                np.save(structure + fname + '.npy', encoding)
-                print('Syntheszing ' + fname + ' ' + structure);
-                fastgen.synthesize(encoding,save_paths=[structure + fname],checkpoint_path=ckpt,samples_per_save=sl)
-                print('Done : ' +  fname);
+        
                 
 # Drop samples to be encoded in /audio and
 # retreive generated samples in /gen_audio
@@ -70,18 +71,3 @@ print 'Generated output directory: ', outputpath
 sr = options.sr
 sl = int(options.sl)
 synthesizer();
-
-
-# for root, dirs, files in os.walk(raw_samples):
-#     for dirname in dirs:
-#         print(dirs)
-    # for fname in files:
-    #     print(fname)
-    #     # if fnmatch.fnmatch(fname, '*.wav'):
-        #     print('Encoding ' + fname);
-        #     audio, encoding = load_encoding(rel_path + fname)
-        #     np.save(raw_samples + fname + '.npy', encoding)
-        #     print('Syntheszing ' + fname + 'to gen_audio');
-        #     fastgen.synthesize(encoding,save_paths=[gen_samples + fname],checkpoint_path='./wavenet-ckpt/model.ckpt-200000',samples_per_save=sl)
-        #     print('Done. Look under ./gen_audio/' + fname);
-            
