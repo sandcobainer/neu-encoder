@@ -47,7 +47,7 @@ def synthesizer():
             for fname in filenames:
                 if fnmatch.fnmatch(fname, '*.wav'):
                     print('Encoding ' + fname);
-                    audio, encoding = load_encoding(os.path.join(dirpath + fname))
+                    audio, encoding = load_encoding(os.path.join(dirpath,fname))
                     np.save(structure + fname + '.npy', encoding)
                     print('Syntheszing ' + fname + ' ' + structure);
                     fastgen.synthesize(encoding,save_paths=[structure + fname],checkpoint_path=ckpt,samples_per_save=sl)
