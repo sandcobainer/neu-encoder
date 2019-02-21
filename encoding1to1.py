@@ -50,7 +50,7 @@ def synthesizer():
                     audio, encoding = load_encoding(os.path.join(dirpath,fname))
                     np.save(structure + fname + '.npy', encoding)
                     print('Syntheszing ' + fname + ' ' + structure);
-                    fastgen.synthesize(encoding,save_paths=[structure + fname],checkpoint_path=ckpt,samples_per_save=sl)
+                    fastgen.synthesize(encoding,save_paths=[os.path.join(structure , fname)],checkpoint_path=ckpt,samples_per_save=sl)
                     print('Done : ' +  fname);
         else:
             print("Folder does already exists!")
