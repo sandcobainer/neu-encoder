@@ -1,9 +1,9 @@
 # Using Neu-Encoder in Max4Live
 
 
-1. Download the repo from 
-2. Place the folder nue-encoder under Music/Ableton/User\ Library/Presets/Instruments/Max\ Instruments/
-3. Download wavenet-ckpt folder and place under nue-encoder 
+1. Download the repo from https://github.com/sandcobainer/nsynth-fastgen
+2. Place the folder neu-encoder under Music/Ableton/User\ Library/Presets/Instruments/Max\ Instruments/
+3. Download wavenet-ckpt folder from google Magenta Downloads : http://download.magenta.tensorflow.org/models/nsynth/wavenet-ckpt.tar and place under /nue-encoder 
 4. Make a Conda environment named 'py27' with Python 2.7 and Magenta (already done)
 5. Open Ableton Live and drag the .amxd file onto a MIDI track
 6. Place your samples under Music/Ableton/User\ Library/Presets/Instruments/Max\ Instruments/input/ folder
