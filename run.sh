@@ -1,4 +1,4 @@
-source /Users/sandeepdasari/anaconda3/bin/activate py27
+source /Users/sandeepdasari/anaconda3/bin/activate magenta
 
 #python test.py
 
