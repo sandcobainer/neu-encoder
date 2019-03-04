@@ -10,7 +10,7 @@ print 'Max4Live requested Python process'
 
 # Drop samples to be encoded in /input and
 # retreive generated samples in /outputGEN
-script_dir =  '/Users/' + sys.argv[3]  + '/Music/Ableton/User Library/Presets/Instruments/Max Instrument/nue-encoder'
+script_dir =  '/Users/' + sys.argv[3]  + '/Desktop/neu-encoder'
 
 ckpt = os.path.join(script_dir, 'wavenet-ckpt/model.ckpt-200000')
 raw_samples =  'input'
@@ -43,11 +43,13 @@ def synthesizer():
         newdir = dirpath[len(inputpath):]
         newdir = newdir[1:]
         structure = os.path.join(outputpath,newdir)
+        print structure
         if not os.path.isdir(structure):
             os.mkdir(structure)
             for fname in filenames:
                 if fnmatch.fnmatch(fname, '*.wav'):
-                    # print 'encoding path: ', fname
+                    # print 'encoding path: ', 
+                    print fname
                     audio, encoding = load_encoding(os.path.join(dirpath,fname))
                     # np.save(structure + fname + '.npy', encoding)
                     print 'Syntheszing ' + fname +'.. ' 
